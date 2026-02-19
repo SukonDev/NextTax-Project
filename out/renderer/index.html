@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextTax</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Splash Screen Styles */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
+
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-logo {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .splash-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1c1c1c;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .splash-loader {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0078D4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="./assets/index-DH4VcOWo.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-yQCM31Ww.css">
+</head>
+
+<body class="antialiased">
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <img src="./assets/logo-Bi1Vwhwj.png" alt="Logo" class="splash-logo">
+        <div class="splash-title">NextTax</div>
+        <div class="splash-loader"></div>
+    </div>
+    <!-- Custom Titlebar (Windows 11 Style) -->
+    <div id="titlebar" class="titlebar">
+        <div class="titlebar-drag-region">
+            <img src="./assets/logo-Bi1Vwhwj.png" alt="NextTax Logo" class="titlebar-logo">
+            <span class="titlebar-title">NextTax</span>
+        </div>
+        <div class="titlebar-controls">
+            <button id="min-btn" class="titlebar-btn" aria-label="Minimize">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1" />
+                </svg>
+            </button>
+            <button id="max-btn" class="titlebar-btn" aria-label="Maximize">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="2" width="8" height="8" stroke="currentColor" stroke-width="1" fill="none" />
+                </svg>
+            </button>
+            <button id="close-btn" class="titlebar-btn close" aria-label="Close">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <line x1="2" y1="2" x2="10" y2="10" stroke="currentColor" stroke-width="1" />
+                    <line x1="10" y1="2" x2="2" y2="10" stroke="currentColor" stroke-width="1" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Setup Wizard Container -->
+    <div id="setup-wizard-container"></div>
+
+    <!-- App Content -->
+    <div id="app" class="app-container">
+        <div class="welcome-screen">
+            <img src="./assets/logo-Bi1Vwhwj.png" alt="NextTax Logo" class="welcome-logo-large mb-6">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                Welcome to NextTax
+            </h1>
+            <p class="text-lg text-gray-600">
+                แอปพลิเคชันบริหารรายรับ-รายจ่ายและคำนวณภาษี SME ไทย
+            </p>
+            <div class="mt-8">
+                <button id="test-db-btn"
+                    class="px-6 py-3 bg-accent text-white rounded-win font-medium hover:bg-accent-hover transition-colors">
+                    ทดสอบระบบฐานข้อมูล
+                </button>
+            </div>
+            <div id="test-result" class="mt-6 text-sm"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

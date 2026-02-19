@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apple Human Interface Guidelines Design Tokens */
+:root {
+  /* System Gray Colors - Light Mode */
+  --system-gray: #8E8E93;
+  --system-gray2: #AEAEB2;
+  --system-gray3: #C7C7CC;
+  --system-gray4: #D1D1D6;
+  --system-gray5: #E5E5EA;
+  --system-gray6: #F2F2F7;
+
+  /* Accent Colors (Apple Blue) */
+  --accent-primary: #007AFF;
+  --accent-hover: #0062CC;
+  --accent-pressed: #004999;
+
+  /* Semantic Colors */
+  --color-success: #34C759;
+  --color-warning: #FF9500;
+  --color-danger: #FF3B30;
+  --color-info: #5856D6;
+
+  /* Surface Colors */
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F2F2F7;
+  --surface-tertiary: #E5E5EA;
+  --surface-card: #FFFFFF;
+
+  /* Text Colors */
+  --text-primary: #000000;
+  --text-secondary: #3C3C43;
+  /* Label Color */
+  --text-tertiary: #8A8A8E;
+  /* Secondary Label Color */
+
+  /* Materials (Translucency) */
+  --mica-background: rgba(255, 255, 255, 0.72);
+  --mica-border: rgba(0, 0, 0, 0.06);
+  /* Softer border */
+
+  /* Shadows (Softer, Diffused) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.07);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Disable scroll wheel on number inputs */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Custom Titlebar (Transparent / Blended) */
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  /* Taller titlebar for Mac feel */
+  background: transparent;
+  /* Let content show through or define specifically */
+  /* border-bottom: 1px solid var(--mica-border); Remove border for cleaner look */
+  user-select: none;
+  -webkit-app-region: drag;
+  z-index: 100;
+  position: relative;
+}
+
+.titlebar-drag-region {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  height: 100%;
+}
+
+.titlebar-logo {
+  height: 16px;
+  width: auto;
+  opacity: 0.8;
+}
+
+.titlebar-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.titlebar-controls {
+  display: flex;
+  -webkit-app-region: no-drag;
+  height: 100%;
+}
+
+.titlebar-btn {
+  width: 48px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.titlebar-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+.titlebar-btn.close:hover {
+  background: #E81123;
+  color: white;
+}
+
+/* App Container */
+.app-container {
+  height: calc(100vh - 38px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Style (Apple Style) */
+.win-card {
+  background: var(--surface-card);
+  border-radius: 12px;
+  /* Increased radius */
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  /* Very subtle border */
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.win-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Button Base */
+button {
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  border-radius: 8px;
+  /* Standard rounded corners */
+}
+
+/* Scrollbar Styling (Minimalist) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  /* Lighter scrollbar */
+  border-radius: 5px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+  background-clip: content-box;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+    /* Slight scale up */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Softer easing */
+}
+
+/* Utility Classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-active {
+  color: var(--accent-primary);
+}
+
+.bg-active {
+  background: var(--accent-primary);
+}

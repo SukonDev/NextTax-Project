@@ -1,0 +1,439 @@
+/* Setup Wizard Styles - Apple HIG Design */
+
+.setup-wizard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(242, 242, 247, 0.8);
+    /* systemGray6 with opacity */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+.wizard-container {
+    width: 640px;
+    max-width: 90vw;
+    background: var(--surface-card);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Wizard Header */
+.wizard-header {
+    padding: 40px 40px 20px;
+    text-align: center;
+}
+
+.wizard-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.wizard-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Wizard Body */
+.wizard-body {
+    padding: 20px 40px 40px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Wizard Steps */
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+    width: 100%;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-label.required::after {
+    content: ' *';
+    color: var(--color-danger);
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    /* 16px prevents zoom on iOS */
+    font-family: inherit;
+    border: 1px solid #E5E5EA;
+    /* systemGray5 */
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.form-input:hover {
+    border-color: #C7C7CC;
+    /* systemGray3 */
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
+}
+
+.form-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Radio Buttons (Cards) */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid #E5E5EA;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.radio-option:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.radio-option.selected {
+    border-color: var(--accent-primary);
+    background: rgba(0, 122, 255, 0.03);
+    box-shadow: 0 0 0 1px var(--accent-primary) inset;
+}
+
+.radio-input {
+    margin-right: 16px;
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
+}
+
+.radio-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.radio-description {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Date Inputs */
+.date-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Error Messages */
+#wizard-errors {
+    margin-bottom: 24px;
+}
+
+.error-message {
+    padding: 12px 16px;
+    background: #FEF0F1;
+    border: 1px solid #F1AEB5;
+    border-radius: 10px;
+    color: #D13438;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-message::before {
+    content: '⚠️';
+}
+
+/* Welcome Step */
+.welcome-content {
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-logo {
+    width: 100px;
+    /* Specific width */
+    height: auto;
+    margin-bottom: 32px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.welcome-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 16px 0;
+}
+
+.welcome-description {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Completion Step */
+.completion-content {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.completion-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #34C759, #30D158);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(52, 199, 89, 0.3));
+}
+
+.summary-list {
+    background: var(--surface-secondary);
+    border-radius: 12px;
+    padding: 24px;
+    /* More padding */
+    margin: 32px 0;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    /* Align left/right */
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.summary-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* Wizard Footer */
+.wizard-footer {
+    padding: 24px 40px 32px;
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Progress Dots */
+.progress-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E5E5EA;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.progress-dot.active {
+    background: var(--accent-primary);
+    transform: scale(1.2);
+}
+
+/* Wizard Buttons */
+.wizard-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.wizard-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 999px;
+    /* Pill shape */
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    letter-spacing: -0.2px;
+}
+
+.wizard-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.wizard-btn-secondary {
+    background: transparent;
+    color: var(--accent-primary);
+    padding: 12px 16px;
+    /* Less padding for text button */
+}
+
+.wizard-btn-secondary:hover:not(:disabled) {
+    background: rgba(0, 122, 255, 0.08);
+    /* Light blue tint */
+}
+
+.wizard-btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+}
+
+.wizard-btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 122, 255, 0.4);
+}
+
+.wizard-btn-primary:active:not(:disabled) {
+    background: var(--accent-pressed);
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .wizard-container {
+        width: 100%;
+        height: 100%;
+        max-width: 100vw;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wizard-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .wizard-header,
+    .wizard-body,
+    .wizard-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .date-group {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,261 @@
+/* Transaction Form Styles */
+.transaction-form-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    height: 100%;
+}
+
+.form-main {
+    background: var(--surface-card);
+    border: 1px solid var(--mica-border);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Type Toggle */
+.type-toggle-container {
+    display: flex;
+    background: #F0F0F0;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.type-toggle-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-secondary);
+}
+
+.type-toggle-btn.active.income {
+    background: #107C10;
+    color: white;
+    box-shadow: 0 2px 4px rgba(16, 124, 16, 0.2);
+}
+
+.type-toggle-btn.active.expense {
+    background: #D13438;
+    color: white;
+    box-shadow: 0 2px 4px rgba(209, 52, 56, 0.2);
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+/* Input Styles Override */
+.form-input-lg {
+    font-size: 18px;
+    padding: 14px 16px;
+}
+
+.amount-input-group {
+    position: relative;
+}
+
+.currency-symbol {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* VAT Section */
+.vat-section {
+    background: #FAFAFA;
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+}
+
+.vat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.vat-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding-top: 12px;
+    border-top: 1px solid #EAEAEA;
+}
+
+.vat-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Receipt Dropzone */
+.receipt-dropzone {
+    background: white;
+    border: 2px dashed #D1D1D1;
+    border-radius: 12px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.receipt-dropzone:hover {
+    border-color: var(--accent-primary);
+    background: rgba(0, 120, 212, 0.02);
+}
+
+.receipt-dropzone.drag-active {
+    border-color: var(--accent-primary);
+    background: rgba(0, 120, 212, 0.1);
+}
+
+.upload-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    color: var(--text-tertiary);
+}
+
+.upload-icon svg {
+    width: 48px;
+    /* Larger icon for dropzone */
+    height: 48px;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.file-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.remove-file-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Recent Transactions Mini List */
+.mini-list-card {
+    background: var(--surface-card);
+    border: 1px solid var(--mica-border);
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-list-header {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.mini-list-items {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mini-trans-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.mini-trans-item:last-child {
+    border-bottom: none;
+}
+
+.mini-trans-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-trans-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.mini-trans-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+}
+
+.mini-trans-amount {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.text-income {
+    color: #107C10;
+}
+
+.text-expense {
+    color: #D13438;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .transaction-form-container {
+        grid-template-columns: 1fr;
+    }
+}
